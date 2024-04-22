@@ -1,0 +1,10 @@
+
+curr_base_dir: '/path/to/dataset/dir'
+
+
+
+
+##########################################################
+
+
+config_DINO: externals/extract_dino/configs/config.yml

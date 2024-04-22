@@ -1,0 +1,9 @@
+[submodule "externals/RAFT"]
+	path = externals/RAFT
+	url = https://github.com/princeton-vl/RAFT.git
+[submodule "externals/GroundingDINO"]
+	path = externals/GroundingDINO
+	url = https://github.com/IDEA-Research/GroundingDINO.git
+[submodule "externals/detectron2"]
+	path = externals/detectron2
+	url = https://github.com/facebookresearch/detectron2.git

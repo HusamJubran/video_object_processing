@@ -1,0 +1,46 @@
+base_path: '/path/to/base/'
+curr_folder: 'horse_temp'
+num_gpus: 1
+check_length_dir: True
+video_n_init: 0
+video_n_end: 1
+resume: True
+folder_name_ext: 1st_stage #for the output folder name
+
+
+
+###############################################
+
+
+frame_stride: 1
+detector: segment_anything
+detectron2_path: externals/detectron2
+percent_outside_threshold: 0.3 
+video_min_time: 1
+video_max_time: 200
+ratio_crop_size: 1.0 #for dogs and giraffs 1.2
+iou_threshold: 0.1
+smallest_box_size: 128
+save_motion: True
+
+
+depth_patch_fusion_path: 'externals/PatchFusion/'
+depth_ckp_path: 'nfs/patchfusion_u4k.pt'
+depth_model: 'zoedepth_custom'
+depth_model_cfg_path: 'zoedepth/models/zoedepth_custom/configs/config_zoedepth_patchfusion.json'
+depth_mode: 'p16'
+
+
+depth_boundary: 0
+depth_blur_mask: True
+
+
+border_pool_size: 5
+occlusion_high_threshold: 0.05
+occlusion_low_threshold: -0.07
+
+
+
+
+
+
