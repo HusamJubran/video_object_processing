@@ -89,13 +89,15 @@ python -m scripts.preprocess_1st_stage --config configs/config_1st_stage.yml
 
 Assuming your directory and videos are structured as follows:
 
+```plaintext
 base_dir/
 ├── horse_new/
 │   ├── AAAAA.mp4
 │   └── BBBBB.mp4
-
+```
 After running the first stage, the structure will be updated to:
 
+```plaintext
 base_dir/
 ├── horse_new/
 │   ├── AAAAA/
@@ -110,7 +112,7 @@ base_dir/
 │           ├── ...
 │   ├── BBBBB/
 │       ├── same as AAAAA...
-
+```
 
 ## Second Stage
 
@@ -130,7 +132,7 @@ python -m scripts.preprocess_2nd_stage --config configs/config_2nd_stage.yml
 
 After processing with the second stage, the directory structure will be updated as follows:
 
-
+```plaintext
 base_dir/
 ├── horse_new/
 │   ├── AAAAA/
@@ -143,7 +145,7 @@ base_dir/
 │       ├── all_depth_maps/
 │   ├── BBBBB/
 │       ├── same as AAAAA...
-
+```
 
 
 
@@ -162,6 +164,7 @@ python scripts/build_dataset.py --base_dir /.../base_dir/horse_new --train_perc 
 
 After executing the script, the datasets will be organized into training and testing directories as follows:
 
+```plaintext
 Final
 ├── train/
 │   ├── 00000/ 
@@ -173,7 +176,7 @@ Final
 │   ├── 00001/ 
 │   ├── 00004/
 │   ├── .../
-
+```
 where each folder contains a trajectory from the 2nd stage.
 
 
