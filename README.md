@@ -7,6 +7,12 @@
   <img src="assets/overview.png" alt="Video Processing Toolkit Interface" width="110%">
 </div>
 
+The processing pipeline is structured into three distinct stages:
+- **First Stage:** This stage identifies and records the trajectories of the objects of interest, capturing various components such as masks over time.
+- **Second Stage:** Frames are selectively filtered out based on criteria like occlusion and truncation. Additionally, this stage refines the crops of the components identified in the first stage, ensuring smoother transitions between consecutive frames.
+- **Third Stage:** DINO features are extracted and added to the dataset.
+
+
 ## Installation
 
 ### Prerequisites
