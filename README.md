@@ -4,7 +4,7 @@
 **VoP** is a robust video preprocessing toolkit designed for dataset creation, developed as part of my Master's Thesis at SVLab, Stanford University. The toolkit processes raw videos containing objects of interest (e.g., animals) and generates datasets featuring trajectories of these objects, complete with depth maps, masks, occlusion boundaries, and DINO features. It supports processing multiple videos and tracking multiple objects of interest within the same video.
 
 <div align="center">
-  <img src="assets/Capture.PNG" alt="Video Processing Toolkit Interface" width="80%">
+  <img src="assets/overview.PNG" alt="Video Processing Toolkit Interface" width="80%">
 </div>
 
 ## Installation
