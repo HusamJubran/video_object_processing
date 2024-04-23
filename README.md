@@ -63,7 +63,7 @@ cd ../../..
 
 Assuming all videos are located in the following path:
 
-/.../base_dir/horse_new
+`/.../base_dir/horse_new`
 
 The pipeline is divided into three main stages to manage the heavy and computationally intensive tasks efficiently.
 
