@@ -143,7 +143,7 @@ The second stage of the pipeline focuses on refining the trajectories generated 
 
 ### Execution
 
-First update the configs/config_2nd_stage.yml file, especially the curr_base_dir to be `/.../base_dir/horse_new`
+First update the `configs/config_2nd_stage.yml` file, especially the curr_base_dir to be `/.../base_dir/horse_new`
 
 Run the second stage with the following command:
 ```bash
@@ -209,6 +209,9 @@ where each folder contains a trajectory from the 2nd stage.
 The third stage of the pipeline is dedicated to extracting DINO features from the cropped images obtained in the previous stages. This process includes the use of PCA (Principal Component Analysis) for feature projection, enhancing the usefulness of the features for machine learning tasks.
 
 ### Execution
+
+First update the `configs/config_3rd_stage.yml` file, especially the curr_base_dir to be `/.../Final`.
+
 To extract DINO features, execute the following command, specifying the configuration for the third stage:
 ```bash
 python -m scripts.preprocess_3rd_stage --config configs/config_3rd_stage.yml
