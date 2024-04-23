@@ -47,7 +47,6 @@ def get_traj(traj_data_dic, args, cap_in, video_dir_path):
 
     """
     traj = []
-    print("traj_data_dic: ", traj_data_dic)
     for i, (frame_id, value) in enumerate(tqdm(traj_data_dic.items())):
 
         frame_id_int = int(frame_id)

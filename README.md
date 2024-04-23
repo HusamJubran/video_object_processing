@@ -46,7 +46,12 @@ NameError: name '_C' is not defined
 
 This typically indicates a problem with the environment setup. To resolve this, reinstall the repository by re-cloning the Git repository and repeating the installation steps.
 
+#### Cloning Submodules
 
+```bash
+git submodule init
+git submodule update
+```
 
 #### Downloading Pretrained Models
 
@@ -58,9 +63,17 @@ cd weights
 wget -q https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 cd ../..
 
+cd PatchFusion
+mkdir nfs
+cd nfs
+wget -q -O patchfusion_u4k.pt "https://huggingface.co/zhyever/PatchFusion/resolve/main/patchfusion_u4k.pt?download=true"
+cd ../..
+
+
+
 cd RAFT
 ./download_models.sh
-cd ../../..
+cd ../..
 ```
 
 ## Usage
@@ -129,6 +142,9 @@ The second stage of the pipeline focuses on refining the trajectories generated 
 - The trajectory is smoothed by adjusting the crop between consecutive frames to avoid abrupt movements that can lower performance in subsequent tasks.
 
 ### Execution
+
+First update the configs/config_2nd_stage.yml file, especially the curr_base_dir to be `/.../base_dir/horse_new`
+
 Run the second stage with the following command:
 ```bash
 python -m scripts.preprocess_2nd_stage --config configs/config_2nd_stage.yml
