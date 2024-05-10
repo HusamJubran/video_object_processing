@@ -252,7 +252,7 @@ def create_videos_list(base_path, folder, num_gpus, config_path, video_n_init, v
     video_n_init (int): Index to start processing from within the filtered list of videos.
     video_n_end (int): Index to end processing in the filtered list of videos, exclusive.
     """
-    coco_target_object = ['dog', 'cat', 'elephant', 'bear', 'zebra', 'giraffe', 'cow', 'sheep', 'horse'] 
+    coco_target_object = ['dog', 'cat', 'elephant', 'bear', 'zebra', 'giraffe', 'cow', 'sheep', 'horse', 'fish'] 
     videos_list = []
     video_label = check_video_label(coco_target_object, folder)
     

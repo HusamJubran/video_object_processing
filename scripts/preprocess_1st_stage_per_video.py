@@ -735,6 +735,8 @@ def get_label_num(label):
         return 7
     if label == "sheep":
         return 8
+    if label == "fish":
+        return 9
     return -1
 
 
@@ -1508,13 +1510,13 @@ def main(args):
     script_path = os.path.dirname(os.path.abspath(__file__))
     sys.path.append(os.path.dirname(script_path))
 
-    
+    things_classes = coco_metadata.thing_classes + ['fish']
 
     if args.detector == 'segment_anything':
         if args.sam_text_input is not None:
-            mask_predictor = SAMPredictor(args.sam_text_input, coco_metadata.thing_classes) 
+            mask_predictor = SAMPredictor(args.sam_text_input, things_classes) 
         else:
-            mask_predictor = SAMPredictor(args.target_object.split('_')[0], coco_metadata.thing_classes) 
+            mask_predictor = SAMPredictor(args.target_object.split('_')[0], things_classes) 
 
     else:
         raise NotImplementedError(f"Detector {args.detector} is not implemented!")
@@ -1526,7 +1528,7 @@ def main(args):
     depth_maps_dir = os.path.join(os.path.dirname(args.out_dir), 'all_depth_maps')
     os.makedirs(depth_maps_dir, exist_ok=True)
 
-    things_classes = coco_metadata.thing_classes
+    
     
     if args.video_path[-4:] == ".mp4" or args.video_path[-4:] == ".mov" or args.video_path[-4:] == ".MOV":
         cap_in = cv2.VideoCapture(args.video_path) 
