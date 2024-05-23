@@ -149,8 +149,10 @@ def extract_features(args, dataloader, model_type, model_path, device, load_mask
                 features_out = features.copy()
             features_out = features_out.reshape(-1, *extractor.num_patches, features_out.shape[-1]) #Bx(number_of_features)x16(PCA Output)
             for j, img_no_norm_ in enumerate(img_no_norm):
+                print("j, img_path[j]: ", j , img_path[j])
                 # save features
                 if save_out_features:
+                    print("saved")
                     save_features(features_out_dir, img_path[j], img_postfix, args.name_depth, features_out[j], args.save_features_as_npy, dim_in_filename=args.dim_in_filename)
                 # visuals
                 save_visuals_frq = max(int(len(dataloader.dataset) / args.n_images_vis), 1)
@@ -247,9 +249,15 @@ def main(args):
         else:
             # if not -> train PCA on training data (pca data)
             mask_postfix_train = args.mask_postfix_train if args.load_mask else None
+            # train_dataloader = create_dataloader(
+            #     args.train_root, batch_size, args.img_postfix_train, mask_postfix_train, 
+            #     n_random_samples=args.n_train_random_samples, debug_subset=args.debug_subset, 
+            #     shuffle=args.shuffle_data, 
+            #     transform=transform, transform_no_norm=transform_no_norm, mask_transform=mask_transform)
+            
             train_dataloader = create_dataloader(
                 args.train_root, batch_size, args.img_postfix_train, mask_postfix_train, 
-                n_random_samples=args.n_train_random_samples, debug_subset=args.debug_subset, 
+                debug_subset=args.debug_subset, 
                 shuffle=args.shuffle_data, 
                 transform=transform, transform_no_norm=transform_no_norm, mask_transform=mask_transform)
 
