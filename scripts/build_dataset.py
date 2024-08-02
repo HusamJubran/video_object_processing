@@ -25,8 +25,9 @@ def main(args):
                 for root, dirs, files in os.walk(subdirectory_path):
                     for name in dirs:
                         curr_path = os.path.join(root, name)
-                        full_dataset[curr_id] = curr_path
-                        curr_id += 1
+                        if os.listdir(curr_path):
+                            full_dataset[curr_id] = curr_path
+                            curr_id += 1
     
     # Convert dictionary to a list of tuples to be able to shuffle and split them
     items = list(full_dataset.items())

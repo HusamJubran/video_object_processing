@@ -3,5 +3,14 @@ jobs/
 configs/config_SAM_occlusion_1st_stage.yml
 configs/config_SAM_occlusion_2nd_stage.yml
 configs/config_SAM_occlusion_3rd_stage.yml
+configs/pre_config_SAM_occlusion_1st_stage.yml
+configs/temp_config_SAM_occlusion_2nd_stage.yml
+configs/temp_depth_mapper.yml
+
 __pycache__/
 
+scripts/preprocessing_datasets.py
+scripts/temp_preprocess_2nd_stage.py
+debugging.ipynb
+scripts/temp_build_dataset.py
+scripts/temp_depth_mapper.py

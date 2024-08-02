@@ -76,11 +76,13 @@ def save_features(features_out_dir, img_path, img_postfix, name_depth, features_
     if features_out_dir is None:
         # save the image features in the same directory as the input image
         # out_path = Path(img_path).parent / file_name
-        out_path = Path(img_path.replace('_rgb.png', '_feat.png').split('.')[0])
+        out_path = Path(img_path.replace(img_postfix, '_feat.png').split('.')[0])
     else:
         # out_path = Path(os.path.join(features_out_dir, *dirs, file_name))
         out_path = Path(os.path.join(features_out_dir, file_name))
     out_path.parent.mkdir(exist_ok=True, parents=True)
+
+    
     features_out_bad_idx = ((np.sum(np.absolute(features_out) >= 1, axis=-1)) > 0)
     features_out[features_out_bad_idx] = features_out[features_out_bad_idx] / np.linalg.norm(features_out[features_out_bad_idx], axis=-1, keepdims=True)
     save_feat_as_img(str(out_path) + '.png', features_out / np.linalg.norm(features_out, axis=-1, keepdims=True))
@@ -265,7 +267,7 @@ def main(args):
             features, masks = extract_features(
                 args, train_dataloader, model_type, model_path, device,
                 load_mask=args.load_mask, stride=args.stride, facet=args.facet, layer=args.layer,
-                log_features=True)
+                log_features=True , img_postfix=args.img_postfix_train[0])
             logger.info('Extracting features for PCA done')
 
             if args.load_mask:
@@ -292,11 +294,12 @@ def main(args):
             _, _= extract_features(
                 args, train_dataloader, model_type, model_path, device,
                 load_mask=args.load_mask, stride=args.stride, facet=args.facet, layer=args.layer,
-                log_features=False, save_out_features = True, pca_mat=pca_mat)
+                log_features=False, save_out_features = True, pca_mat=pca_mat, img_postfix=args.img_postfix_train[0])
             
     else:
         pca_mat = None
 
+    print("args.test_root: ", args.test_root)
     # extract and save features
     mask_postfix_test = args.mask_postfix_test if args.load_mask else None
     test_dataloader = create_dataloader(
@@ -313,7 +316,7 @@ def main(args):
     _, _= extract_features(
                 args, test_dataloader, model_type, model_path, device,
                 load_mask=args.load_mask, stride=args.stride, facet=args.facet, layer=args.layer,
-                log_features=False, save_out_features = True, pca_mat=pca_mat)
+                log_features=False, save_out_features = True, pca_mat=pca_mat, img_postfix=args.img_postfix_test[0])
 
     if args.load_mask:
         masks = masks > 0

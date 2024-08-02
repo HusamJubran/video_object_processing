@@ -279,7 +279,9 @@ def create_videos_list(base_path, folder, num_gpus, config_path, video_n_init, v
             else: 
                 new_video = Video_Input(base_path + folder + "/" ,video_name , video_label)
                 videos_list.append(new_video)
-                
+
+    for curr_vid in videos_list:
+        print("curr_vid.video_path: ", curr_vid.video_path)     
     videos_list = videos_list[video_n_init:video_n_end]
     print("videos_list[0].video_path: ", videos_list[0].video_path)
     preprocess_videos(videos_list, num_gpus, path_to_images_folder,config_path)

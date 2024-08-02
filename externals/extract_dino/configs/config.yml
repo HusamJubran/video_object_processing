@@ -15,6 +15,7 @@ metric: cos
 use_pca: True
 pca_dim: 16 #64
 save_pca_features: True
+load_pca_path: '/viscam/projects/video_animals/husam/preprocessing/data/Final_combined/pca.faiss'
 
 save_clusters: True
 

@@ -314,10 +314,10 @@ class Trajectory:
                 cumulative_flow = cumulative_flow + np.max(full_flow) 
                 animal.cumulative_flow = np.max(full_flow) 
                 # Check flow thresholds and update lists
-                if args.ignore_cumulative_flow == True or cumulative_flow > 4:
+                if args.ignore_cumulative_flow == True or cumulative_flow > 2:
                     self.smooth_animals_list.append(animal)
                     self.add_animal_to_save_list(animal)
-                    if cumulative_flow > 4:
+                    if cumulative_flow > 2:
                         cumulative_flow = 0 
 
                         
